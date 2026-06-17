@@ -1,0 +1,59 @@
+package burmalda.visuals.api.render.uniforms;
+
+import com.mojang.blaze3d.buffers.GpuBufferSlice;
+import com.mojang.blaze3d.buffers.Std140Builder;
+import com.mojang.blaze3d.buffers.Std140SizeCalculator;
+import net.minecraft.client.gl.DynamicUniformStorage;
+import org.joml.Vector2f;
+import org.joml.Vector4f;
+
+import java.nio.ByteBuffer;
+
+/**
+ * @author ultra_lox
+ * @since 19.03.2026
+ */
+
+public class BorderUniform {
+    public static final int SIZE = new Std140SizeCalculator()
+            .putVec2()
+            .putVec4()
+            .putFloat()
+            .putFloat()
+            .get();
+
+    private static final DynamicUniformStorage<UniformValue> STORAGE =
+            new DynamicUniformStorage<>("Border UBO", SIZE, 2);
+
+    public static void clearStorage() {
+        STORAGE.clear();
+    }
+
+    private final Vector2f size;
+    private final Vector4f round;
+    private final float thickness;
+    private final float smoothness;
+
+    public BorderUniform(Vector2f size, Vector4f round, float thickness, float smoothness) {
+        this.size = size;
+        this.round = round;
+        this.thickness = thickness;
+        this.smoothness = smoothness;
+    }
+
+    public record UniformValue(Vector2f size, Vector4f round, float thickness, float smoothness)
+            implements DynamicUniformStorage.Uploadable {
+        @Override
+        public void write(ByteBuffer buffer) {
+            Std140Builder.intoBuffer(buffer)
+                    .putVec2(size)
+                    .putVec4(round)
+                    .putFloat(thickness)
+                    .putFloat(smoothness);
+        }
+    }
+
+    public GpuBufferSlice uniforms() {
+        return STORAGE.write(new UniformValue(this.size, this.round, this.thickness, this.smoothness));
+    }
+}

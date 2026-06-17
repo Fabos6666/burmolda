@@ -1,0 +1,19 @@
+# Dependency directories
+.gradle/
+build/
+
+# IDE files
+.idea/
+*.iml
+*.iws
+.project
+.classpath
+.settings/
+.vscode/
+
+# Minecraft files
+run/
+.fabric/
+
+# Logs
+logs/

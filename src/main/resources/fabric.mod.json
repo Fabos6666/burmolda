@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "burmalda",
+  "version": "${version}",
+	"name": "burmalda",
+	"description": "burmalda visuals",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/untitled/icon.png",
+  "environment": "*",
+	"entrypoints": {
+		"main": [
+			"burmalda.visuals.Burmalda"
+		]
+	},
+  "mixins": [
+    "mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

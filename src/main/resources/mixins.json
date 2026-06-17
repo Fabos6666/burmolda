@@ -1,0 +1,22 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "burmalda.visuals.api.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "accessor.CameraAccessor",
+    "game.ClientPlayerInteractionManagerMixin",
+    "game.MinecraftClientMixin",
+    "other.KeyboardMixin",
+    "render.GameRendererMixin",
+    "render.GlCommandEncoderMixin",
+    "render.InGameHudMixin",
+    "render.WorldRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
