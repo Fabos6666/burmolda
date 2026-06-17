@@ -9,7 +9,6 @@
     "game.MinecraftClientMixin",
     "other.KeyboardMixin",
     "render.GameRendererMixin",
-    "render.GlCommandEncoderMixin",
     "render.InGameHudMixin",
     "render.WorldRendererMixin"
   ],
